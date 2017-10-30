@@ -26,11 +26,10 @@
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PythonTensorFlow.py" />
-    <Compile Include="Restore.py">
+    <Compile Include="TestImport.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestImport.py">
+    <Compile Include="TestMain.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
