@@ -129,7 +129,7 @@ with tf.Session() as sess:
     model_saver.restore(sess, model_path)
 
     predicted_y = sess.run(predict_output, feed_dict={x: testData.datas, keep_prob: 1.0})
-    print(predicted_y + 1)
+    #print(predicted_y + 1)
     pred_file = open("pred.txt", mode="w+", encoding="utf-8")
     for index in range(len(predicted_y)):
         print(predicted_y[index] + 1, file=pred_file)

@@ -25,7 +25,7 @@ class DataImport(object):
                 temp = numpy.hstack((dir, temp))
                 self.datas.append(temp)
         self.dataSize = len(self.datas)
-        self.generateTrainAndValidate()
+        #self.generateTrainAndValidate()
 
     def generateTrainAndValidate(self):
         random.shuffle(self.datas)
@@ -56,6 +56,19 @@ class DataImport(object):
         #print(self.dataSize)
         #print(self.trainSize)
         #print(self.validateSize)
+
+    def generateTrain(self):
+        random.shuffle(self.datas)
+        self.inputs = []
+        self.outputs = []
+        for index in range(self.dataSize):
+            tempOut = [0 for x in range(0, self.labelCount)]
+            for num in range(self.labelCount):
+                if ((num + 1) == self.datas[index][0]):
+                    tempOut[num] = 1
+            self.outputs.append(tempOut)
+            self.inputs.append((self.datas[index])[1:])
+        return [self.inputs, self.outputs]
 
     def saveDataToLocal(self, path):
         file = open(path, 'w+')

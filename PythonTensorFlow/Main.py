@@ -134,15 +134,15 @@ def main(_):
 
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for i in range(100):
-      batch = inputData.next_batch(inputData.trainSize)
+    for i in range(200):
+      batch = inputData.generateTrain()
       train_accuracy = accuracy.eval(feed_dict={
           x: batch[0], y_: batch[1], keep_prob: 1.0})
       print('step %d, training accuracy %g' % (i, train_accuracy))
       train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
 
-    print('test accuracy %g' % accuracy.eval(feed_dict={
-        x: inputData.validateInputs, y_: inputData.validateOutputs, keep_prob: 1.0}))
+    #print('test accuracy %g' % accuracy.eval(feed_dict={
+    #    x: inputData.validateInputs, y_: inputData.validateOutputs, keep_prob: 1.0}))
 
     model_save = tf.train.Saver()
     model_dir = "model"
